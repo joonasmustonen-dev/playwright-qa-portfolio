@@ -1,0 +1,39 @@
+{
+	"id": "6aa3e32db2088878808a34b5",
+	"name": "Reqres API  Tests",
+	"timestamp": "2026-09-11T11:17:03.253Z",
+	"collection_id": "CDD45a70dCe81f4B30BE7D92",
+	"folder_id": 0,
+	"environment_id": "0",
+	"totalPass": 13,
+	"delay": 0,
+	"persist": true,
+	"status": "finished",
+	"startedAt": "2026-09-11T11:17:01.271Z",
+	"totalFail": 0,
+	"results": [],
+	"count": 1,
+	"totalTime": 0,
+	"collection": {
+		"requests": [
+			{
+				"id": "d641d7AFd002a69cBfD74FDb"
+			},
+			{
+				"id": "bfCCfEAdfaE0bE62eC7bfCAd"
+			},
+			{
+				"id": "1ab3AB18fF3bb4093c256f43"
+			},
+			{
+				"id": "aE4bFd36cDFAE0C1fEf24d4a"
+			},
+			{
+				"id": "a1ebfb9b9a96baBE2BbA20b1"
+			},
+			{
+				"id": "Ef98Cc6e17B8fDECc284DC2b"
+			}
+		]
+	}
+}
