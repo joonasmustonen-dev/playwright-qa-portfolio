@@ -1,9 +1,10 @@
 # Playwright QA Portfolio
 
-An automated test suite built against [the-internet.herokuapp.com](https://the-internet.herokuapp.com), 
-a public practice site for test automation. This project was built to demonstrate 
-end-to-end QA skills: test case design, automated UI and negative-path testing, 
-reusable test infrastructure, CI integration, and structured bug reporting.
+An automated test suite built against [the-internet.herokuapp.com](https://the-internet.herokuapp.com) 
+for UI testing, and a Postman collection testing the public [Reqres](https://reqres.in) 
+API for API testing. Built to demonstrate end-to-end QA skills: test case design, 
+automated UI and API testing, negative-path testing, reusable test infrastructure, 
+CI integration, and structured bug reporting.
 
 ## Why this project exists
 
@@ -15,6 +16,7 @@ ability rather than just familiarity with concepts.
 ## Tech stack
 
 - **[Playwright](https://playwright.dev/)** (TypeScript) - browser automation and testing framework
+- **Postman** — API testing and validation
 - **GitHub Actions** - CI pipeline, runs the full suite on every push
 - **Node.js**
 
@@ -23,6 +25,9 @@ ability rather than just familiarity with concepts.
 ```
 playwright-qa-portfolio/
 ├── .github/workflows/       # CI pipeline config
+├── api-tests/
+│   ├── reqres-collection.json  # Postman collection for API testing
+│   └── README.md
 ├── fixtures/
 │   └── auth.fixture.ts      # reusable authenticated-session fixture
 ├── test-data/
@@ -34,6 +39,7 @@ playwright-qa-portfolio/
 │   ├── dropdown.spec.ts
 │   └── file-upload.spec.ts
 ├── docs/
+│   ├── test-plan.md         # test plan and test case documentation
 │   └── bug-reports.md       # written bug report(s) found during testing
 ├── playwright.config.ts
 └── README.md
@@ -48,6 +54,7 @@ playwright-qa-portfolio/
 | Dynamic content loading | `dynamic-loading.spec.ts` | Elements that become visible vs. elements added to the DOM after an async delay |
 | Dropdown selection | `dropdown.spec.ts` | Native `<select>` interaction and default/selected state |
 | File upload | `file-upload.spec.ts` | Successful upload, and a negative case that surfaced a real bug (see below) |
+| API testing | `api-tests/reqres-collection.json` | GET/POST/PUT/DELETE against a public REST API, including a negative case (404 on non-existent resource) |
 
 Both success and failure paths are covered deliberately — not just happy-path testing.
 
@@ -73,6 +80,11 @@ View the HTML report after a run:
 ```bash
 npx playwright show-report
 ```
+
+### API tests (Postman)
+Import `api-tests/reqres-collection.json` into Postman and run individual 
+requests or the full collection via Collection Runner. See 
+[`api-tests/README.md`](./api-tests/README.md) for details.
 
 ## CI
 
@@ -117,6 +129,12 @@ selection - so these tests largely confirm standard browser behavior rather
 than meaningful application logic. In a real application, I'd assert on 
 whatever effect the selection has, not just the selection itself.
 
+**API testing via Postman, kept separate from CI**  
+API tests were written in Postman with explicit test scripts (status codes 
+and response body validation) rather than automated into the CI pipeline. 
+This was a deliberate choice to demonstrate direct, tool-based API testing 
+skill on its own terms, distinct from framework-based automation.
+
 ## Bug found
 
 While writing negative-path coverage for file upload, submitting the form 
@@ -127,6 +145,13 @@ corresponding test in `file-upload.spec.ts` documents this as the current
 (buggy) actual behavior, and is linked from the bug report so it can be 
 updated if the underlying issue is ever fixed.
 
+## Documentation
+
+- [`docs/test-plan.md`](./docs/test-plan.md) — scope, approach, and detailed 
+  test cases for every feature covered
+- [`docs/bug-reports.md`](./docs/bug-reports.md) — written bug report(s) 
+  found during testing
+  
 ## Use of AI tooling
 
 Claude Code was used throughout this project's development,
